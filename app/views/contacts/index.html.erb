@@ -1,13 +1,42 @@
-<%= link_to "Add Contact", new_contact_path %><br><br>
+<%= link_to "Add Contact", new_contact_path, class: "btn btn-primary" %><br><br>
+<div class="panel panel-default">
+
+  <table class="table">
+
 
 <% @contacts.each do |contact|%>
 
+<tr>
+  <td class="middle">
+    <div style= "font-size:20px; color:blue;">
 
-  <%=contact.name %><%= link_to "Show", contact, title:"show" %><%= link_to "edit", edit_contact_path(contact), title:"Edit" %><%= link_to "Delete", contact_path(contact), title:"show", :method => :delete %><br>
+
+  <%=contact.name %>&nbsp;<%= link_to "Show", contact, title:"show",class: "btn btn-primary pull-right" %><%= link_to "edit", edit_contact_path(contact), title:"Edit",class: "btn btn-primary pull-right" %><%= link_to "Delete", contact_path(contact), title:"show", :method => :delete,class: "btn btn-danger pull-right" %><br>
+  </div>
   <%=contact.email %><br>
-  <%=contact.phone %>
-<p>-------------------------------------</p>
+  <address>
+
+
+  <% contact.phon.each do |b|%>
+  <%=b.phone %>
+  <% break %>
+  <% end %>
+  </address>
+
+
+
 
 
 
 <% end %>
+      </td>
+    </tr>
+  </table>
+</div>
+<div class="text-center">
+
+
+<nav >
+<%=  will_paginate %>
+</nav>
+</div>

@@ -1,7 +1,15 @@
-<%= @contact.name %><br>
-<%= @contact.email %><br>
-<%= @contact.phone %><br>
-<%= @contact.address %><br>
-<%= @contact.brief_notes %><br>
+Name:<%= @contact.name %><br>
+Eamil:<%= @contact.email %><br>
+<% if @contact.phon.present? %>
+  <% @contact.phon.each do |b| %>
+  Phone:<%= b.phone %><br>
+  <% end %>
+<% end %>
+<% if @contact.address.present? %>
+  <% @contact.address.each do |b| %>
+  Address:<%= b.address %><br>
+  <% end %>
+<% end %>
+Breif-Note:<%= @contact.brief_notes %><br>
 <button type="button" name="button"><%= link_to "Back", contacts_path %></button>
 <button type="button" name="button"><%= link_to "Edit", edit_contact_path %></button>

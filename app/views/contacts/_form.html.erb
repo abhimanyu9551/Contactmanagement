@@ -1,18 +1,39 @@
 <%= form_for @contact do |f| %>
+<div class="col-md-4">
+
+
+  <div class="form-group">
+
   <%= f.label :name %>
-  <%= f.text_field :name %><br>
-
+  <%= f.text_field :name,class: "form-control" %><br>
+  </div>
+  <div class="form-group">
   <%= f.label :email %>
-  <%= f.text_field :email %><br>
+  <%= f.text_field :email,class: "form-control" %><br>
+  </div>
+  <div class="form-group">
+  <%= f.fields_for :phon do |ad| %>
+    <%= ad.label :phone %>
+    <%= ad.text_area :phone,class: "form-control" %>
+    <%= ad.check_box :_destroy %>
+    <%= ad.label :_destroy , "remove"%><br>
+</div>
+  <% end %>
+  <div class="form-group">
+  <%= f.fields_for :address do |ad| %>
+    <%= ad.label :address %>
+    <%= ad.text_area :address,class: "form-control" %>
+    <%= ad.check_box :_destroy %>
+    <%= ad.label :_destroy , "remove"%><br>
+  <% end %>
+</div>
 
-  <%= f.label :phone %>
-  <%= f.text_field :phone %><br>
 
-  <%= f.label :address %>
-  <%= f.text_field :address %><br>
+
 
   <%= f.label :brief_notes %>
-  <%= f.text_field :brief_notes %><br>
+  <%= f.text_field :brief_notes,class: "form-control" %><br>
 
-  <<button type="submit" name="button">Save</button>
+  <button type="submit" name="button">Save</button>
+</div>
 <% end %>

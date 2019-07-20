@@ -9,6 +9,13 @@ gem 'rails', '~> 5.2.3'
 gem 'sqlite3'
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
+
+gem 'bootstrap-sass', '~> 3.4', '>= 3.4.1'
+
+
+gem 'bootstrap-will_paginate', '~> 1.0'
+
+gem 'nested_form_fields'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -43,6 +50,10 @@ end
 group :development do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
   gem 'web-console', '>= 3.3.0'
+end
+
+group :production do
+  gem 'pg', '~>0.18'
 end
 
 group :test do

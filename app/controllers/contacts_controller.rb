@@ -2,11 +2,15 @@ class ContactsController < ApplicationController
   before_action :find_contact, only: [:show , :edit , :update ,:destroy]
 
   def index
-      @contacts = Contact.all
+      @contacts = Contact.all.paginate(page: params[:page], per_page:10)
   end
 
   def new
     @contact =  Contact.new
+    @contact.address.build
+    @contact.phon.build
+
+
   end
 
   def create
@@ -24,6 +28,8 @@ class ContactsController < ApplicationController
   end
 
   def edit
+    @contact.address.build
+    @contact.phon.build
   end
 
   def update
@@ -45,7 +51,7 @@ class ContactsController < ApplicationController
   end
 
   def contact_params
-    params.require(:contact).permit(:name ,:email ,:phone,:address,:brief_notes)
+    params.require(:contact).permit(:name ,:email,:brief_notes,address_attributes: Address.attribute_names.map(&:to_sym).push(:_destroy),phon_attributes:  Phon.attribute_names.map(&:to_sym).push(:_destroy))
   end
 
 end
